@@ -1,0 +1,31 @@
+---
+import { Picture } from "astro:assets";
+---
+
+<header class="flex flex-col p-4">
+    <div class="flex justify-between items-center">
+        <div class="flex flex-col">
+            <h1 class="text-4xl font-extrabold italic h-10">Foodgo</h1>
+            <h2 class="text-2xl font-medium mt-1">
+                Order your favourite food!
+            </h2>
+        </div>
+
+        <a class="h-10 w-10" href="/.">
+            <Picture
+                loading={"eager"}
+                ;
+                src="https://randomuser.me/api/portraits/women/9.jpg"
+                ;
+                widths={[400, 800, 1250]}
+                ;
+                width={128}
+                ;
+                height={128}
+                ;
+                class="object-fill w-full"
+                alt="userpic"
+            />
+        </a>        
+    </div>
+</header>
