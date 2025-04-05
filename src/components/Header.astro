@@ -3,15 +3,15 @@ import { Picture } from "astro:assets";
 ---
 
 <header class="flex flex-col p-4">
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-start">
         <div class="flex flex-col">
             <h1 class="text-4xl font-extrabold italic h-10">Foodgo</h1>
-            <h2 class="text-2xl font-medium mt-1">
+            <h2 class="text-xl text-gray-700 font-medium mt-1">
                 Order your favourite food!
             </h2>
         </div>
 
-        <a class="h-10 w-10" href="/.">
+        <a class="h-15 w-15 rounded-2xl overflow-hidden" href="/.">
             <Picture
                 loading={"eager"}
                 ;
@@ -23,7 +23,7 @@ import { Picture } from "astro:assets";
                 ;
                 height={128}
                 ;
-                class="object-fill w-full"
+                class="object-cover w-full h-full"
                 alt="userpic"
             />
         </a>        
