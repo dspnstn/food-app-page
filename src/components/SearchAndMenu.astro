@@ -2,7 +2,11 @@
 import Searchbar from "./Searchbar.astro";
 import Menu from "./Menu.astro";
 ---
-<div class="flex flex-row justify-between items-start px-4 gap-2">   
-    <Searchbar />
-    <Menu />    
+<div class="mt-5 mb-2 flex items-center justify-center px-4 gap-4 w-full">
+    <div class="flex items-center justify-center max-w-2xl w-full gap-4">   
+    <Searchbar class="flex-grow max-w-[600px]" />
+    <Menu class="flex-none" />    
+    </div>
 </div>
+
+<!-- TODO put the elms in the center-->
