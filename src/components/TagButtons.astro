@@ -2,11 +2,12 @@
 const allProducts = await Astro.glob("../pages/products/*.md");
 const allTags = [...new Set(allProducts.flatMap(product => product.frontmatter.tags || []))];
 ---
-<nav class="my-4 mx-2 flex flex-row justify-around items-center flex-wrap gap-2">
+<nav class="my-4 mx-2 flex flex-row justify-around items-center overflow-x-scroll no-scrollbar gap-2">
     {allTags.map(tag => (
       <a 
       class="
       rounded-full h-12 leading-12 px-6 pb-2 
+      drop-shadow-xl
       text-gray-600 bg-gray-200 font-semibold no-underline hover:bg-red-200"
       href="/.">
           {tag}
