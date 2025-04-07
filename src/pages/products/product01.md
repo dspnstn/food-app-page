@@ -1,4 +1,4 @@
 ---
 title: Cheeseburger
-tags: [all, combos, sliders, fish, vegan]
+tags: [all, combos, sliders, fish, vegan, something, something else]
 ---
