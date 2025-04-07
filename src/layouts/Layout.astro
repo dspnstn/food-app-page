@@ -6,6 +6,7 @@ import ProductButtons from "../components/ProductButtons.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 ---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -15,13 +16,18 @@ import "../styles/global.css";
 		<title>Foodgo</title>
 	</head>
 
-	<body class="text-[1.5rem] font-sans min-h-[100vh] bg-gray-50
-    flex flex-col
-	">
-		<Header />
-		<SearchAndMenu />
-		<TagButtons />
-		<ProductButtons />
+	<body
+		class="text-[1.5rem] font-sans min-h-[100vh] min-w-[320px] bg-gray-50
+    flex flex-col"
+	>
+		<div class="fixed inset-0 ">
+			<div class="bg-gray-50">
+				<Header />
+				<SearchAndMenu />
+				<TagButtons />
+			</div>
+		</div>
+		<div class="mt-84"> <ProductButtons /></div>
 		<slot />
 		<Footer />
 	</body>
