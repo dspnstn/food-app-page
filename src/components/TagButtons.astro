@@ -6,7 +6,7 @@ const allTags = [...new Set(allProducts.flatMap(product => product.frontmatter.t
 overflow-x-auto hover:overflow-x-scroll no-scrollbar gap-2">
     {allTags.map(tag => (
       <a 
-      class=" relative
+      class="whitespace-nowrap
       rounded-full h-12 leading-12 px-6 pb-2 mb-8
       shadow-[0_10px_5px_rgba(0,0,0,0.25)] hover:shadow-xl
       text-gray-600 bg-gray-200 font-semibold no-underline
