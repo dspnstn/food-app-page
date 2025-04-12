@@ -2,7 +2,7 @@
 const allProducts = await Astro.glob("../pages/products/*.md");
 const allTags = [...new Set(allProducts.flatMap(product => product.frontmatter.tags || []))];
 ---
-<nav class="mt-14 mb-3 mx-2 flex flex-row justify-around items-center 
+<nav class="mt-10 mb-3 mx-2 flex flex-row justify-around items-center 
 overflow-x-auto hover:overflow-x-scroll no-scrollbar gap-2">
     {allTags.map(tag => (
       <a 
