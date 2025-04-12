@@ -26,8 +26,12 @@ import "../styles/global.css";
 				<TagButtons />
 			</div>
 		</div>
-		<div class="mt-84 mb-32"> <ProductButtons /></div>
-		<slot />
+
+		<main class="flex-grow pt-[300px] pb-[100px]">
+			<div class="mt-14 mb-32"><ProductButtons /></div>
+			<slot />
+		</main>
+		
 		<Footer />
 	</body>
 </html>
