@@ -13,15 +13,14 @@ import "../styles/global.css";
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Foodgo</title>
+		<title>Food app</title>
 	</head>
 
 	<body
 		class="text-[1.5rem] font-sans min-w-[320px] bg-gray-50
-    flex flex-col"
-	>
-		<div class="fixed inset-0"> 
-			<div class="bg-gray-50" >
+		 flex flex-col">
+		<div class="fixed top-0 left-0 right-0 bg-gray-50">
+			<div class="max-w-[1800px] mx-auto">
 				<Header />
 				<SearchAndMenu />
 				<TagButtons />
