@@ -1,8 +1,6 @@
 ---
 import ProductLayout from "../layouts/ProductLayout.astro";
 const products = await Astro.glob('../pages/products/*.md');
-
-console.log('Product URLs:', products.map(p => p.url));
 ---
 
 <div
