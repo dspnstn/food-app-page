@@ -1,25 +1,22 @@
 ---
-import ProductLayout from '../layouts/ProductLayout.astro';
+import ProductLayout from "../layouts/ProductLayout.astro";
+const products = await Astro.glob('../pages/products/*.md');
 ---
-<div class="flex flex-col justify-center items-center 
-[@media(min-width:375px)]:flex-row [@media(min-width:375px)]:flex-wrap">
-    
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
-   <ProductLayout />
+
+<div
+   class="flex flex-col justify-center items-center
+[@media(min-width:375px)]:flex-row [@media(min-width:375px)]:flex-wrap"
+>
+   {
+      products.map(product => (
+         <ProductLayout
+            title={product.frontmatter.title}
+            description={product.frontmatter.description || ''}
+            image={product.frontmatter.image}
+            rating={product.frontmatter.rating}
+            tags={product.frontmatter.tags}
+            url={product.url}
+         />
+      ))
+   }
 </div>

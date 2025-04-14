@@ -1,4 +1,7 @@
 ---
 title: Cheeseburger
-tags: [all, combos, sliders, fish, vegan, something, something else, somethinglongwithoutspaces]
+description: Fish or vegetable burger 
+tags: [all, combos, sliders, fish, vegan]
+rating: 4.9
 ---
+some text
