@@ -1,7 +1,5 @@
 ---
-import burgerpic from "../assets/burgerpic.avif";
-import { Image } from "astro:assets";
-const { title, description, rating, url = "/" } = Astro.props;
+const { title, description, rating, image, url, alt = "/" } = Astro.props;
 ---
 
 <div
@@ -13,14 +11,13 @@ text-[18px]
 [@media(min-width:375px)_and_(max-width:1023px)]:h-[210px]"
 >
     <a class="flex justify-center items-center" href={url}>
-        <Image
-            loading={"eager"}
-            src={burgerpic}
-            widths={[128, 256]}
+        <img
+            loading={"lazy"}
+            src={image}
             width={60}
             height={60}
             class="object-contain w-[90%] h-[85%]"
-            alt="hamburger photo"
+            alt={alt}
         />
     </a>
         <h1 class="font-bold">{title}</h1>
