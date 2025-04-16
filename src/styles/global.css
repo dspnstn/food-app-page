@@ -12,3 +12,9 @@
     scrollbar-width: none;  /* Firefox */
 }
 }
+
+/* Reset default margins and padding */
+body {
+    margin: 0;
+    padding: 0;
+  }
