@@ -12,10 +12,3 @@
     scrollbar-width: none;  /* Firefox */
 }
 }
-
-@layer base {
-    html {
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-    }
-  }
