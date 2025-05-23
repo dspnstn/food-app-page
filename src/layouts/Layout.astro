@@ -16,22 +16,23 @@ import "../styles/global.css";
 		<title>Food app</title>
 	</head>
 
-	<body
-		class="text-[1.5rem] font-sans min-w-[320px] bg-gray-50
+	<body>
+		<div class="text-[1.5rem] font-sans min-w-[320px] bg-gray-50
 		 flex flex-col">
-		<div class="fixed top-0 left-0 right-0 bg-gray-50">
-			<div class="max-w-[1800px] mx-auto">
-				<Header />
-				<SearchAndMenu />
-				<TagButtons />
+			<div class="fixed top-0 left-0 right-0 bg-gray-50">
+				<div class="max-w-[1800px] mx-auto">
+					<Header />
+					<SearchAndMenu />
+					<TagButtons />
+				</div>
 			</div>
-		</div>
 
-		<main class="flex-grow pt-[300px] pb-[100px]">
-			<div class="mt-12 mb-32"><ProductButtons /></div>
-			<slot />
-		</main>
-		
-		<Footer />
+			<main class="flex-grow pt-[300px] pb-[100px]">
+				<div class="mt-12 mb-32"><ProductButtons /></div>
+				<slot />
+			</main>
+			
+			<Footer />
+		</div>
 	</body>
 </html>

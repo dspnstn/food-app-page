@@ -1,5 +1,7 @@
 ---
 import { Picture } from "astro:assets";
+import type { ImageMetadata } from 'astro';
+import userpic from '../assets/userpic.jpg';
 ---
 
 <header class="flex flex-col p-4">
@@ -14,7 +16,7 @@ import { Picture } from "astro:assets";
         <a class="h-15 w-15 rounded-2xl overflow-hidden" href="/.">
             <Picture
                 loading={"eager"}
-                src="https://randomuser.me/api/portraits/women/9.jpg"
+                src={userpic}            
                 widths={[128, 256]}
                 width={128}
                 height={128}
