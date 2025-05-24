@@ -1,6 +1,12 @@
 ---
 const { frontmatter } = Astro.props;
+const  basePrice: number = parseFloat(frontmatter.price.replace(/[^\d.]/g, ''));
+let portionCount: number = 1;
 import "../styles/global.css";
+
+function getTotalPrice(count: number): string {
+    return (count * basePrice).toFixed(2);
+}
 ---
 
 <head>
@@ -47,7 +53,12 @@ import "../styles/global.css";
             <div class="flex items-center gap-4 mt-2">  <!-- Portion-counter  -->
                 <!-- Minus button -->
                 <button 
-                    onclick="document.querySelector('#portion-count').textContent = Math.max(1, parseInt(document.querySelector('#portion-count').textContent) - 1)"
+                    onclick="
+                    const countElement = document.querySelector('#portion-count');
+                    const newCountMinusButton = Math.max(1, parseInt(countElement.textContent) - 1);
+                    countElement.textContent = newCount;
+                    document.querySelector('#total-price').textContent = '$${(newCountMinusButton * {basePrice}).toFixes(2)}';
+                    "
                     class="whitespace-nowrap text-xl
                     flex items-center justify-center
                     rounded-xl h-10 leading-10 w-10 
@@ -65,11 +76,16 @@ import "../styles/global.css";
                 </button>  
                 
                 <!-- Portion count -->
-                <p id="portion-count" class="font-semibold text-xl">2</p>
+                <p id="portion-count" class="font-semibold text-xl">1</p>
 
                 <!-- Plus button -->
                 <button
-                    onclick="document.querySelector('#portion-count').textContent = parseInt(document.querySelector('#portion-count').textContent) + 1"
+                    onclick="
+                    const countElement = document.querySelector('#portion-count');
+                    const newCountPlusButton = Math.max(1, parseInt(countElement.textContent) + 1);
+                    countElement.textContent = newCount;
+                    document.querySelector('#total-price').textContent = '$${(newCountPlusButton * {basePrice}).toFixes(2)}';
+                    "
                     class="whitespace-nowrap text-xl
                     flex items-center justify-center
                     rounded-xl h-10 leading-10 w-10  
@@ -90,7 +106,9 @@ import "../styles/global.css";
         </div>
 
         <div class="flex row gap-4 justify-between mx-1 mt-4">
-            <a class="whitespace-nowrap text-xl
+            <a 
+                id="total-price"
+                class="whitespace-nowrap text-xl
                     rounded-xl h-12 leading-12 px-12 text-center justify-center
                     shadow-[0_10px_5px_rgba(0,0,0,0.25)] hover:shadow-xl
                     text-white bg-red-500 font-semibold no-underline
@@ -99,7 +117,7 @@ import "../styles/global.css";
                     active:bg-red-300
                     md:hover:bg-red-200
                     touch-manipulation"
-                href=" ">{frontmatter.price}
+                href=" ">${getTotalPrice(portionCount)}
             </a>
             <a
                 class="whitespace-nowrap
@@ -114,7 +132,5 @@ import "../styles/global.css";
                 href="/shopping-cart">ORDER NOW
             </a>
         </div>
-        
-        <!-- spicy - portion - price button - order now button -->
     </div>
 </div>
