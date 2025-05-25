@@ -18,8 +18,8 @@ function getTotalPrice(count: number): string {
     // to get the base price from the data attribute 
     // and to make sure elements exist
     document.addEventListener('DOMContentLoaded', () => {
-        const container = document.getElementById('portion-count');
-        const basePrice = parseFloat(container.dataset.basePrice);
+        const priceContainer = document.getElementById('price-container');
+        const basePrice = parseFloat(priceContainer?.dataset.basePrice || '0');
 
         function updateCount(change) {
         const countElement = document.getElementById('portion-count');
@@ -37,7 +37,7 @@ function getTotalPrice(count: number): string {
 </script>
 
 <!-- to store the basePrice as a data attribute -->
-<div id="price-container" data-base-price={basePrice} class=hidden"></div>
+<div id="price-container" data-base-price={basePrice} class="hidden"></div>
 
 <div class="fixed inset-0 bg-gray-50 -z-10"></div>
 
