@@ -1,6 +1,6 @@
 ---
 const { frontmatter } = Astro.props;
-const  basePrice: number = parseFloat(frontmatter.price.replace(/[^\d.]/g, ''));
+const basePrice: number = parseFloat(frontmatter.price.replace(/[^\d.]/g, ''));
 let portionCount: number = 1;
 import "../styles/global.css";
 
@@ -8,12 +8,36 @@ function getTotalPrice(count: number): string {
     return (count * basePrice).toFixed(2);
 }
 ---
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 </head>
+
+<script is:inline>
+    // to get the base price from the data attribute 
+    // and to make sure elements exist
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('portion-count');
+        const basePrice = parseFloat(container.dataset.basePrice);
+
+        function updateCount(change) {
+        const countElement = document.getElementById('portion-count');
+        const priceElement = document.getElementById('total-price');
+        const currentCount = parseInt(countElement.textContent);
+        const newCount = Math.max(1, currentCount + change);
+
+        countElement.textContent = newCount;
+        priceElement.textContent = '$' + (newCount * basePrice).toFixed(2);
+        }
+
+        // to make the function available globally via window object
+        window.updateCount = updateCount;
+    })
+</script>
+
+<!-- to store the basePrice as a data attribute -->
+<div id="price-container" data-base-price={basePrice} class=hidden"></div>
 
 <div class="fixed inset-0 bg-gray-50 -z-10"></div>
 
@@ -53,12 +77,7 @@ function getTotalPrice(count: number): string {
             <div class="flex items-center gap-4 mt-2">  <!-- Portion-counter  -->
                 <!-- Minus button -->
                 <button 
-                    onclick="
-                    const countElement = document.querySelector('#portion-count');
-                    const newCountMinusButton = Math.max(1, parseInt(countElement.textContent) - 1);
-                    countElement.textContent = newCount;
-                    document.querySelector('#total-price').textContent = '$${(newCountMinusButton * {basePrice}).toFixes(2)}';
-                    "
+                    onclick="window.updateCount(-1)"
                     class="whitespace-nowrap text-xl
                     flex items-center justify-center
                     rounded-xl h-10 leading-10 w-10 
@@ -80,12 +99,7 @@ function getTotalPrice(count: number): string {
 
                 <!-- Plus button -->
                 <button
-                    onclick="
-                    const countElement = document.querySelector('#portion-count');
-                    const newCountPlusButton = Math.max(1, parseInt(countElement.textContent) + 1);
-                    countElement.textContent = newCount;
-                    document.querySelector('#total-price').textContent = '$${(newCountPlusButton * {basePrice}).toFixes(2)}';
-                    "
+                    onclick="window.updateCount(1)"
                     class="whitespace-nowrap text-xl
                     flex items-center justify-center
                     rounded-xl h-10 leading-10 w-10  
